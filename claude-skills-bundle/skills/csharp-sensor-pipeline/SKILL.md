@@ -7,7 +7,7 @@ description: Use when building or modifying .NET 10 / C# 14 services that ingest
 
 Build sensor ingestion as a **five-stage pipeline** in-process: one instance per sensor, configured from SQLite (seeded from YAML), with an in-memory context cache per pipeline, publishing POJOs to an in-process Orchestration Manager. Transport choice lives in stage 1 and drives latency. Pipeline shape — direct method invocation vs `Channel<T>` between stages — is chosen per pipeline based on whether producer and consumer need decoupling.
 
-This skill mirrors the Java `reactive-sensor-pipeline` skill architecturally. The stages, YAML→SQLite rule, and context-cache scoping are identical. The C# primitives (`System.IO.Pipelines`, `Channel<T>`, `PeriodicTimer`) replace Reactor Netty + Project Reactor. Security, configuration, and deployment follow the other C# skills (`csharp-windows-service`, `csharp-rest-aspnetcore`, `csharp-efcore-sqlite`) — see those for details not repeated here.
+This skill mirrors the Java `java-sensor-pipeline` skill architecturally. The stages, YAML→SQLite rule, and context-cache scoping are identical. The C# primitives (`System.IO.Pipelines`, `Channel<T>`, `PeriodicTimer`) replace Reactor Netty + Project Reactor. Security, configuration, and deployment follow the other C# skills (`csharp-windows-service`, `csharp-rest-aspnetcore`, `csharp-efcore-sqlite`) — see those for details not repeated here.
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: java-reactive-sensor-pipeline
+name: java-sensor-pipeline
 description: Use when writing or modifying Java 17 Spring WebFlux code that ingests data from physical sensors (UDP, TCP, serial/COM, Bluetooth Classic, BLE) through a Reactor pipeline and publishes to an in-process Orchestration Manager. Triggers on mentions of Reactor Netty, Flux/Mono sensor streams, jSerialComm, BlueZ, hid4java, GATT, sensor calibration, alarm thresholds, YAML-configured pipelines, SQLite sensor configuration, or the five-stage pipeline (integration → protocol → normalization → alarm → final). Use whenever the user is building a pipeline-runner service in this codebase, adding a new sensor type, wiring a new transport, changing stage contracts, or optimizing sensor-to-response p99 latency. Consult even when the user doesn't name these terms — any code that reads a sensor and produces an event in this project is in scope.
 ---
 

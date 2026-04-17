@@ -1,6 +1,6 @@
 # Claude Skills Bundle
 
-Six Claude Code skills plus a team-wide `CLAUDE.md`, tuned for a Java 17 reactive sensor pipeline stack and a .NET 10 / C# 14 / Visual Studio 2026 stack with Avalonia, ASP.NET Core, EF Core + SQLite, and Windows Service hosting.
+Seven Claude Code skills plus a team-wide `CLAUDE.md`, tuned for a Java 17 reactive sensor pipeline stack and a .NET 10 / C# 14 / Visual Studio 2026 stack with Avalonia, ASP.NET Core, EF Core + SQLite, and Windows Service hosting. Plus a language-agnostic code-review skill that applies the CLAUDE.md rules as review criteria.
 
 ## Contents
 
@@ -9,12 +9,13 @@ claude-skills-bundle/
 ├── README.md                          (this file)
 ├── CLAUDE.md                          (team-wide coding rules)
 └── skills/
-    ├── reactive-sensor-pipeline/      (Java 17, Spring WebFlux, Reactor Netty)
+    ├── java-sensor-pipeline/          (Java 17, Spring WebFlux, Reactor Netty)
     ├── csharp-sensor-pipeline/        (.NET 10, Kestrel + Channel<T>)
     ├── csharp-windows-service/        (.NET 10 Worker SDK, SCM hosting)
     ├── csharp-avalonia/               (Avalonia 11 + CommunityToolkit.Mvvm)
     ├── csharp-rest-aspnetcore/        (Minimal API + OAuth2 JWT)
-    └── csharp-efcore-sqlite/          (EF Core 10 + SQLite)
+    ├── csharp-efcore-sqlite/          (EF Core 10 + SQLite)
+    └── code-review/                   (self-review + PR review, CLAUDE.md as criteria)
 ```
 
 Each skill is a folder containing `SKILL.md` and a `references/` directory with deeper guidance loaded on demand.
@@ -43,7 +44,7 @@ Unzip the bundle somewhere temporary, then move the contents of the `skills/` fo
 
 ```
 ~/.claude/skills/
-├── reactive-sensor-pipeline/
+├── java-sensor-pipeline/
 ├── csharp-sensor-pipeline/
 ├── csharp-windows-service/
 ├── csharp-avalonia/
@@ -117,11 +118,12 @@ After install, try each of these in a matching project. If the right skill loads
 
 | Prompt | Expected skill |
 |---|---|
-| "Add a new UDP-based temperature sensor to the pipeline" | `reactive-sensor-pipeline` (in a Java project) or `csharp-sensor-pipeline` (in a .NET project) |
+| "Add a new UDP-based temperature sensor to the pipeline" | `java-sensor-pipeline` (in a Java project) or `csharp-sensor-pipeline` (in a .NET project) |
 | "Create a BackgroundService that polls an API every 30 seconds" | `csharp-windows-service` |
 | "Add a settings view to my Avalonia app" | `csharp-avalonia` |
 | "Add a PUT endpoint for updating orders with validation" | `csharp-rest-aspnetcore` |
 | "Add a migration for an IsArchived column on Orders" | `csharp-efcore-sqlite` |
+| "Review this pull request" or pasting a diff with "any issues?" | `code-review` |
 
 If the wrong skill triggers, or no skill triggers, open the skill's `SKILL.md` and tighten the `description` — then restart your Claude Code session.
 
@@ -129,7 +131,7 @@ If the wrong skill triggers, or no skill triggers, open the skill's `SKILL.md` a
 
 ## What each skill covers (one line each)
 
-- **reactive-sensor-pipeline** — Java 17 / Spring WebFlux / Reactor Netty with a five-stage pipeline (integration → protocol → normalization → alarm → final), YAML-seeded SQLite config, per-pipeline context cache, in-process Orchestration Manager hand-off.
+- **java-sensor-pipeline** — Java 17 / Spring WebFlux / Reactor Netty with a five-stage pipeline (integration → protocol → normalization → alarm → final), YAML-seeded SQLite config, per-pipeline context cache, in-process Orchestration Manager hand-off.
 
 - **csharp-sensor-pipeline** — Mirrors the Java skill architecturally. Kestrel `ConnectionHandler` + `System.IO.Pipelines` for TCP, `Channel<T>` for boundaries that need decoupling, direct method calls everywhere else.
 
@@ -141,13 +143,15 @@ If the wrong skill triggers, or no skill triggers, open the skill's `SKILL.md` a
 
 - **csharp-efcore-sqlite** — EF Core 10 with SQLite-specific guidance (decimal-as-TEXT, WAL mode, table-rebuild limits), `IDbContextFactory<T>` for long-running hosts, `AsNoTracking` default for reads, SQLite in-memory for tests (not the InMemory provider).
 
+- **code-review** — Two modes in one skill. Mode A fires automatically after any coding turn — a silent final-pass check against CLAUDE.md rules, with a short flag if anything's off. Mode B fires on explicit request (paste + "review this", PR links, "any issues?") and produces a structured report with Blocking/Suggested/Noted severity tiers. Loads language-specific skills when the file type indicates them.
+
 ---
 
 ## Notes
 
 ### The two sensor pipeline skills are deliberately parallel
 
-`reactive-sensor-pipeline` (Java) and `csharp-sensor-pipeline` (.NET) share the same five stages, the same YAML → SQLite rule, and the same per-pipeline context cache scoping. A team working across both stacks can read one skill and recognize the architecture in the other.
+`java-sensor-pipeline` (Java) and `csharp-sensor-pipeline` (.NET) share the same five stages, the same YAML → SQLite rule, and the same per-pipeline context cache scoping. A team working across both stacks can read one skill and recognize the architecture in the other.
 
 ### Some guidance is repeated across the C# skills
 
