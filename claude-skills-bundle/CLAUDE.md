@@ -88,3 +88,24 @@ Applies to code you write that emits JSON over the wire or to files. Not to JSON
 - Tool descriptions teach the caller how to use the tool. Tool results report data only — no hints, no next-step suggestions, no prose.
 - Return flat arrays. No per-item commentary.
 - Apply rule 7 to the payload.
+
+### 9. Auto optimization research loop
+At the end of any turn where I modified non-test source files, and the change is not trivially optimal already (no loops, I/O, allocations, or branching of consequence), run up to two performance passes — scoped to **only the methods/functions I edited this turn**, not the whole file.
+
+Scope per pass, per edited method:
+- Identify runtime-cost constructs inside the edited method body: nested loops, in-loop allocations, redundant I/O, N+1 calls, blocking calls on async paths, loop-invariant recomputation.
+- Rate each finding high / medium / low.
+- Apply high and medium findings in place, within that method body only. Skip low.
+- Do not touch sibling methods, other files, signatures, or call sites.
+- Stop early if no high/medium findings remain.
+
+Skip entirely:
+- Test files: `*test*`, `*spec*`, `*_test.*`, `*.test.*`, `*.spec.*`, `tests/**`, `__tests__/**`.
+- Trivial edits: renames, comments, type annotations, config keys, single-constant changes.
+
+Silence:
+- Do not ask me anything during the loop.
+- If fixes were applied, end the turn with one line: `optimization pass: <n> fixes in <files>`. Otherwise say nothing about the loop.
+
+Verification:
+- If the repo has tests covering a touched file, run them after the loop. Revert the last fix on failure and stop the loop.
