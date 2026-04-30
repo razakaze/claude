@@ -1,6 +1,6 @@
 ---
 name: csharp-rest-aspnetcore
-description: Use when writing or modifying REST APIs in ASP.NET Core on C# 14 / .NET 10, using Minimal API by default with Controllers only when specific features require them. Triggers on mentions of WebApplication, MapGet/MapPost/MapPut/MapDelete, TypedResults, ProblemDetails, AddValidation, endpoint filters, JWT bearer authentication, OpenAPI/Swagger, API versioning, rate limiting, IHttpClientFactory, or building HTTP services in .NET. Use whenever the user is adding an endpoint, wiring authentication, designing error responses, versioning an API, or choosing between Minimal API and Controllers. Consult even when the user doesn't name these terms — any .NET project with Microsoft.NET.Sdk.Web or a WebApplication.CreateBuilder call is in scope.
+description: Use when writing or modifying REST APIs in ASP.NET Core on C# 14 / .NET 10, using Minimal API by default with Controllers only when specific features require them. Triggers on mentions of WebApplication, MapGet/MapPost/MapPut/MapDelete, TypedResults, ProblemDetails, AddValidation, endpoint filters, JWT bearer authentication, OpenAPI/Swagger, API versioning, rate limiting, IHttpClientFactory, or building HTTP services in .NET. Use whenever the user is adding an endpoint, wiring authentication, designing error responses, versioning an API, or choosing between Minimal API and Controllers.
 ---
 
 # C# REST API with ASP.NET Core (.NET 10 / C# 14)
@@ -49,6 +49,8 @@ For everything else — CRUD, microservices, internal APIs, gateways — Minimal
   </ItemGroup>
 </Project>
 ```
+
+Common .NET 10 / C# 14 defaults (`TargetFramework`, `Nullable`, `ImplicitUsings`, `TreatWarningsAsErrors`) are explained in [`../_shared/csproj-defaults.md`](../_shared/csproj-defaults.md).
 
 `InvariantGlobalization` shrinks the deployment and is the right default for APIs that don't format locale-sensitive output.
 

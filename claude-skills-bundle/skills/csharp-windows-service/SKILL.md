@@ -1,6 +1,6 @@
 ---
 name: csharp-windows-service
-description: Use when writing or modifying a long-running Windows Service in C# 14 / .NET 10, built with the Worker SDK and Microsoft.Extensions.Hosting.WindowsServices. Triggers on mentions of BackgroundService, IHostedService, Worker Service, sc.exe, ServiceBase, Windows Event Log, service lifecycle, graceful shutdown, service install/uninstall, or running a headless .NET process under the Windows Service Control Manager. Use whenever the user is adding a background worker, debugging service startup/shutdown, configuring service recovery, or moving hosted logic between console and service mode. Consult even when the user doesn't name these terms — any .NET 10 project with OutputType exe, SDK Microsoft.NET.Sdk.Worker, or a class inheriting BackgroundService is in scope.
+description: Use when writing or modifying a long-running Windows Service in C# 14 / .NET 10, built with the Worker SDK and Microsoft.Extensions.Hosting.WindowsServices. Triggers on mentions of BackgroundService, IHostedService, Worker Service, sc.exe, ServiceBase, Windows Event Log, service lifecycle, graceful shutdown, service install/uninstall, or running a headless .NET process under the Windows Service Control Manager. Use whenever the user is adding a background worker, debugging service startup/shutdown, configuring service recovery, or moving hosted logic between console and service mode.
 ---
 
 # C# Windows Service (.NET 10 / C# 14)
@@ -33,6 +33,8 @@ Build Windows Services as **Worker projects** with one or more `BackgroundServic
   </ItemGroup>
 </Project>
 ```
+
+Common .NET 10 / C# 14 defaults (`Nullable`, `ImplicitUsings`, `TreatWarningsAsErrors`) are explained in [`../_shared/csproj-defaults.md`](../_shared/csproj-defaults.md). This skill overrides `TargetFramework` to `net10.0-windows`.
 
 `net10.0-windows` is required (not plain `net10.0`) — the Windows Services package pulls in Windows-specific APIs. `SelfContained=true` plus `PublishSingleFile=true` produces a single `.exe` you can drop into any Windows box without a framework install.
 

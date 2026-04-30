@@ -1,6 +1,6 @@
 ---
 name: csharp-avalonia
-description: Use when writing or modifying Avalonia 11 desktop applications in C# 14 / .NET 10, using CommunityToolkit.Mvvm for MVVM and Microsoft.Extensions.DependencyInjection for DI. Triggers on mentions of Avalonia, AXAML, ViewLocator, ObservableObject, ObservableProperty, RelayCommand, IClassicDesktopStyleApplicationLifetime, Window/UserControl, data binding, Dispatcher.UIThread, or desktop GUI work in .NET. Use whenever the user is adding a view, wiring a ViewModel, configuring the app's DI container, handling cross-platform desktop behavior (Windows/macOS/Linux), or testing ViewModels without the UI thread. Consult even when the user doesn't name these terms — any .NET project with an .axaml file, an App.axaml.cs, or CommunityToolkit.Mvvm in packages is in scope.
+description: Use when writing or modifying Avalonia 11 desktop applications in C# 14 / .NET 10, using CommunityToolkit.Mvvm for MVVM and Microsoft.Extensions.DependencyInjection for DI. Triggers on mentions of Avalonia, AXAML, ViewLocator, ObservableObject, ObservableProperty, RelayCommand, IClassicDesktopStyleApplicationLifetime, Window/UserControl, data binding, Dispatcher.UIThread, or desktop GUI work in .NET. Use whenever the user is adding a view, wiring a ViewModel, configuring the app's DI container, handling cross-platform desktop behavior (Windows/macOS/Linux), or testing ViewModels without the UI thread. If the project uses ReactiveUI instead of CommunityToolkit.Mvvm, this skill does not apply.
 ---
 
 # C# Avalonia (Avalonia 11 / C# 14 / .NET 10)
@@ -53,6 +53,8 @@ MyApp/
   </ItemGroup>
 </Project>
 ```
+
+Common .NET 10 / C# 14 defaults (`TargetFramework`, `Nullable`, `ImplicitUsings`, `TreatWarningsAsErrors`) are explained in [`../_shared/csproj-defaults.md`](../_shared/csproj-defaults.md).
 
 `AvaloniaUseCompiledBindingsByDefault=true` is non-negotiable. Runtime bindings are ~10× slower and fail silently. Compiled bindings catch errors at build time.
 

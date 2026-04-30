@@ -1,9 +1,11 @@
 ---
 name: csharp-efcore-sqlite
-description: Use when writing or modifying data access code in C# 14 / .NET 10 that uses Entity Framework Core 10 against SQLite. Triggers on mentions of DbContext, DbSet, OnModelCreating, migrations (Add-Migration, dotnet ef), AsNoTracking, IQueryable, IDbContextFactory, SaveChanges, transactions, JournalMode WAL, PRAGMA, or any .csproj referencing Microsoft.EntityFrameworkCore.Sqlite. Use whenever the user is adding an entity, writing a query, creating a migration, designing a unit of work, handling SQLite-specific constraints (schema alteration, concurrency, type affinity), or testing with in-memory SQLite. Consult even when the user doesn't name these terms — any repository class with an injected DbContext or query composition against a DbSet is in scope.
+description: Use exclusively for data access code in C# 14 / .NET 10 that uses Entity Framework Core 10 against SQLite. Requires a SQLite-specific marker — a `Microsoft.EntityFrameworkCore.Sqlite` package reference, a `UseSqlite(...)` call, a `Microsoft.Data.Sqlite` reference, or a `.db`/`.sqlite` file in the project. Do not apply to SQL Server, PostgreSQL, MySQL, or any other EF Core provider — their migration model, concurrency story, and type system differ enough that this guidance is wrong outside SQLite. Triggers on UseSqlite, SqliteConnection, JournalMode WAL, PRAGMA, SQLite-specific schema-alteration limits, in-memory SQLite testing, or YAML-seeded SQLite config. Use whenever the user is adding an entity, writing a query, creating a migration, or designing a unit of work in a confirmed-SQLite project.
 ---
 
 # C# EF Core with SQLite (EF Core 10 / .NET 10)
+
+**Scope: SQLite only.** Do not apply this skill's guidance to SQL Server, PostgreSQL, MySQL, or any other EF Core provider. Verify the project references `Microsoft.EntityFrameworkCore.Sqlite` or calls `UseSqlite(...)` before applying anything below. If the provider is anything else, stop and use that provider's guidance instead.
 
 Use **code-first migrations**. **`IDbContextFactory<T>`** for short-lived contexts in long-running hosts (services, background workers). **`AsNoTracking`** as the default for reads. **Explicit transactions** at the unit-of-work boundary. Respect **SQLite's schema-alteration limits** — plan migrations accordingly.
 
