@@ -1,8 +1,8 @@
 # Behavioral Guidelines
 
-Three rule sets: **DATA RULES** gate which tools may run. **PROMPT RULES** govern how you talk to me in chat. **CODING RULES** govern the code you write. Apply in parallel.
+Four rule sets: **DATA RULES** gate which tools may run. **PROMPT RULES** govern how you talk to me in chat. **CODING RULES** govern the code you write. **GIT RULES** govern version-control actions. Apply in parallel.
 
-When a CODING rule conflicts with another CODING rule, the later rule in this file wins. PROMPT rules do not conflict with each other because they apply at different moments (before starting work vs. during work). DATA RULES are non-negotiable and override the other two.
+When a CODING rule conflicts with another CODING rule, the later rule in this file wins. PROMPT rules do not conflict with each other because they apply at different moments (before starting work vs. during work). DATA RULES are non-negotiable and override the others.
 
 ---
 
@@ -103,3 +103,17 @@ Before presenting any code answer, verify it covers:
 - **Tested**: existing test covers the path, or new test added.
 
 If a check can't be cleared, attach a bug report to the answer: which check failed, why, proposed fixes.
+
+---
+
+## GIT RULES
+
+- Subject ≤72 chars.
+- Refuse to commit secrets, credentials, `.env`, large binaries.
+- Never `--no-verify`, never bypass signing, never amend a pushed commit.
+- Push only to the authorized branch. Never to `main`/`master` directly.
+- Confirm before destructive ops (`reset --hard`, `push --force`, `branch -D`, `clean -fd`, conflict-overwriting checkout).
+- PR open/merge requires explicit user request.
+- Conflicts → surface, don't auto-resolve.
+- Pull before push if behind.
+- Non-git VCS (Mercurial, SVN, Perforce, etc.) → refuse AI access.
