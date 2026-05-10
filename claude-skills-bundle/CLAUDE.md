@@ -19,7 +19,8 @@ When a CODING rule conflicts with another CODING rule, the later rule in this fi
 - No filler openers, no closing remarks. One qualifier per claim max.
 - Use contractions. Short sentences.
 - When showing a code change, show only the change, not surrounding context.
-- If blocked mid-task, state the blocker in one sentence and stop. Don't ask permission to continue on the obvious path — state your assumption and proceed.
+- Blocked: state the blocker in one sentence and stop.
+- Ambiguous but obvious: state your assumption and proceed.
 
 ### After finishing
 - Don't restate what you did. The diff is the summary.
