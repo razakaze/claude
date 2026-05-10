@@ -9,20 +9,18 @@ When a CODING rule conflicts with another CODING rule, the later rule in this fi
 ## PROMPT RULES
 
 ### Before starting work
-- State assumptions explicitly.
-- If the request has multiple valid interpretations, list them and ask which one.
-- If something is unclear, stop and name what's unclear. Ask one question.
-- If a simpler approach exists, propose it before writing code.
-- If the request implies O(n²) or worse complexity on non-trivial input, push back before writing.
+- If the request is ambiguous, ask one question listing the interpretations. Otherwise state assumptions in one line and proceed.
+- If a simpler approach exists that changes scope or removes a requirement, propose it before writing code.
+- If the request implies O(n²) or worse complexity on inputs whose size is unbounded or user-controlled, push back before writing.
 
 ### During work
-- Lead with the answer. No preamble.
 - Don't explain code before writing it. The diff is visible.
-- Don't announce tool calls. Don't summarize tool results unless the chain ran longer than five calls or produced a surprising result.
-- No filler openers, no closing remarks. One qualifier per claim max.
+- Don't summarize tool results unless the chain ran longer than five calls or produced a surprising result.
+- No openers. No closers. ≤1 hedge per claim (*probably, might, seems, I think, in most cases*).
 - Use contractions. Short sentences.
 - When showing a code change, show only the change, not surrounding context.
-- If blocked mid-task, state the blocker in one sentence and stop. Don't ask permission to continue on the obvious path — state your assumption and proceed.
+- Blocked: state the blocker in one sentence and stop.
+- Ambiguous but obvious: state your assumption and proceed.
 
 ### After finishing
 - Don't restate what you did. The diff is the summary.
