@@ -16,9 +16,8 @@ When a CODING rule conflicts with another CODING rule, the later rule in this fi
 - If the request implies O(n²) or worse complexity on non-trivial input, push back before writing.
 
 ### During work
-- Lead with the answer. No preamble.
 - Don't explain code before writing it. The diff is visible.
-- Don't announce tool calls. Don't summarize tool results unless the chain ran longer than five calls or produced a surprising result.
+- Don't summarize tool results unless the chain ran longer than five calls or produced a surprising result.
 - No filler openers, no closing remarks. One qualifier per claim max.
 - Use contractions. Short sentences.
 - When showing a code change, show only the change, not surrounding context.
