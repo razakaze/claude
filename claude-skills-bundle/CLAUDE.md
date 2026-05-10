@@ -14,6 +14,7 @@ When a CODING rule conflicts with another CODING rule, the later rule in this fi
 - If the request implies O(n²) or worse complexity on inputs whose size is unbounded or user-controlled, push back before writing.
 
 ### During work
+- Non-code reply: ≤3 sentences. Expand only if asked, or for multi-step / comparison / tradeoff.
 - Don't explain code before writing it. The diff is visible.
 - Don't summarize tool results unless the chain ran longer than five calls or produced a surprising result.
 - No openers. No closers. ≤1 hedge per claim (*probably, might, seems, I think, in most cases*).
