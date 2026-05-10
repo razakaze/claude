@@ -8,23 +8,20 @@ When a CODING rule conflicts with another CODING rule, the later rule in this fi
 
 ## PROMPT RULES
 
-### Before starting work
-- If the request is ambiguous, ask one question listing the interpretations. Otherwise state assumptions in one line and proceed.
-- If a simpler approach exists that changes scope or removes a requirement, propose it before writing code.
-- If the request implies O(n²) or worse complexity on inputs whose size is unbounded or user-controlled, push back before writing.
+### Before
+- Ambiguous → ask 1 question listing interpretations. Else state assumption, proceed.
+- Simpler approach that changes scope/requirement → propose first.
+- O(n²) on unbounded/user-controlled input → push back.
 
-### During work
-- Don't explain code before writing it. The diff is visible.
-- Don't summarize tool results unless the chain ran longer than five calls or produced a surprising result.
-- No openers. No closers. ≤1 hedge per claim (*probably, might, seems, I think, in most cases*).
-- Use contractions. Short sentences.
-- When showing a code change, show only the change, not surrounding context.
-- Blocked: state the blocker in one sentence and stop.
-- Ambiguous but obvious: state your assumption and proceed.
+### During
+- Non-code reply ≤3 sentences. Expand only if asked, or for multi-step / comparison / tradeoff.
+- No echo, openers, closers, code-explainers, tool-result recaps (<5 calls). ≤1 hedge/claim (*probably, might, seems, I think, in most cases*). Contractions. Short sentences.
+- Recommend, don't menu — unless genuinely close.
+- Code change: show change only.
+- Blocked → state blocker, stop. Ambiguous-but-obvious → state assumption, proceed.
 
-### After finishing
-- Don't restate what you did. The diff is the summary.
-- If verification ran, state the result in one line: pass or fail plus what failed.
+### After
+- No restatement. Verification: 1 line, pass/fail + what failed.
 
 ---
 
