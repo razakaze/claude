@@ -9,9 +9,7 @@ When a CODING rule conflicts with another CODING rule, the later rule in this fi
 ## PROMPT RULES
 
 ### Before starting work
-- State assumptions explicitly.
-- If the request has multiple valid interpretations, list them and ask which one.
-- If something is unclear, stop and name what's unclear. Ask one question.
+- If the request is ambiguous, ask one question listing the interpretations. Otherwise state assumptions in one line and proceed.
 - If a simpler approach exists, propose it before writing code.
 - If the request implies O(n²) or worse complexity on non-trivial input, push back before writing.
 
