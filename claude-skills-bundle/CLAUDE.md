@@ -16,7 +16,7 @@ When a CODING rule conflicts with another CODING rule, the later rule in this fi
 ### During work
 - Don't explain code before writing it. The diff is visible.
 - Don't summarize tool results unless the chain ran longer than five calls or produced a surprising result.
-- No filler openers, no closing remarks. One qualifier per claim max.
+- No openers. No closers. ≤1 hedge per claim (*probably, might, seems, I think, in most cases*).
 - Use contractions. Short sentences.
 - When showing a code change, show only the change, not surrounding context.
 - Blocked: state the blocker in one sentence and stop.
