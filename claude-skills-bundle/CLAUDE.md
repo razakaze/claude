@@ -11,7 +11,7 @@ When a CODING rule conflicts with another CODING rule, the later rule in this fi
 ### Before starting work
 - If the request is ambiguous, ask one question listing the interpretations. Otherwise state assumptions in one line and proceed.
 - If a simpler approach exists that changes scope or removes a requirement, propose it before writing code.
-- If the request implies O(n²) or worse complexity on non-trivial input, push back before writing.
+- If the request implies O(n²) or worse complexity on inputs whose size is unbounded or user-controlled, push back before writing.
 
 ### During work
 - Don't explain code before writing it. The diff is visible.
