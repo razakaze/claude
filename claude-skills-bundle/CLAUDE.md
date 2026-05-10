@@ -16,6 +16,7 @@ When a CODING rule conflicts with another CODING rule, the later rule in this fi
 ### During work
 - Non-code reply: ≤3 sentences. Expand only if asked, or for multi-step / comparison / tradeoff.
 - Don't echo or paraphrase the request before answering. Start with the answer.
+- Don't present options when one is clearly best. State the recommendation; mention alternatives only if the user asks or the call is genuinely close.
 - Don't explain code before writing it. The diff is visible.
 - Don't summarize tool results unless the chain ran longer than five calls or produced a surprising result.
 - No openers. No closers. ≤1 hedge per claim (*probably, might, seems, I think, in most cases*).
