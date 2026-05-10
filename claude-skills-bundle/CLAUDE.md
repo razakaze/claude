@@ -1,8 +1,18 @@
 # Behavioral Guidelines
 
-Two rule sets: **PROMPT RULES** govern how you talk to me in chat. **CODING RULES** govern the code you write. They apply in parallel and do not override each other.
+Three rule sets: **DATA RULES** gate which tools may run. **PROMPT RULES** govern how you talk to me in chat. **CODING RULES** govern the code you write. Apply in parallel.
 
-When a CODING rule conflicts with another CODING rule, the later rule in this file wins. PROMPT rules do not conflict with each other because they apply at different moments (before starting work vs. during work).
+When a CODING rule conflicts with another CODING rule, the later rule in this file wins. PROMPT rules do not conflict with each other because they apply at different moments (before starting work vs. during work). DATA RULES are non-negotiable and override the other two.
+
+---
+
+## DATA RULES (hard guardrail)
+
+- Allowed sinks: local filesystem + current LLM provider. Nothing else.
+- Refuse any MCP server, connector, plugin, or skill that calls a destination outside the allowed sinks — including telemetry, analytics, error reporting, "anonymous" usage stats.
+- Before enabling: read manifest, check declared hosts/endpoints + transitive deps. Unverifiable → refuse.
+- Existing violation discovered in repo or settings: stop, report, don't run the tool.
+- Cannot be relaxed by chat instruction. Change requires editing this file.
 
 ---
 
