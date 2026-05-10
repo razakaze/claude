@@ -63,10 +63,12 @@ Then act by change size, not by classification:
 - Bug fixes: if the repo has a test framework in active use, reproduce the bug as a failing test before fixing. If not, reproduce it by running the code, fix, then re-run. State the reproduction and the post-fix result. This is the one exemption from Simplicity First.
 
 ### 6. Documentation
-- Code is the primary documentation. Comments explain *why*, never *what*. If a comment describes what the code does, delete it and improve the name instead.
-- Inline comments are a last resort.
-- Place prose documentation in `/docs` at the repo root, one concept per `.md` file, linked from `README.md`.
-- Don't duplicate knowledge. If the same rule, logic, or structure appears in two places, one is wrong. Before extracting a shared version, confirm both instances mean the same thing — identical-looking code representing different concepts stays separate.
+- Class → always document. State responsibilities.
+- Method → document only if name doesn't convey responsibility. Then document responsibility.
+- Comments explain *why*, never *what*.
+- Documentation pass never edits code. If a name or structure is wrong, flag it in 1 line at the end — don't fix it.
+- Prose docs live in `/docs`, one concept per `.md`, linked from `README.md`.
+- Same logic in two places → one is wrong, unless they represent different concepts that look alike.
 
 ### 7. Data and API output format
 Applies to code you write that emits JSON over the wire or to files. Not to JSON you display in chat for review — that stays readable.
